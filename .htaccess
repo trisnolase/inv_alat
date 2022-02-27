@@ -33,10 +33,10 @@ RewriteRule ^printdata-(.*)$ view_data/detail_alat_print.php?idp=$1 [L]
 
 Options All -Indexes
 
-ErrorDocument 400 http://localhost/invalat
-ErrorDocument 401 http://localhost/invalat
-ErrorDocument 403 http://localhost/invalat
-ErrorDocument 404 http://localhost/invalat
-ErrorDocument 500 http://localhost/invalat
+ErrorDocument 400 http://localhost/inv_alat
+ErrorDocument 401 http://localhost/inv_alat
+ErrorDocument 403 http://localhost/inv_alat
+ErrorDocument 404 http://localhost/inv_alat
+ErrorDocument 500 http://localhost/inv_alat
 
 </IfModule>
