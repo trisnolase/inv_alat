@@ -1,7 +1,7 @@
 <?php
-	error_reporting(0);
-	include"db_link.php";
-  $hal=$_GET['apage'];
+error_reporting(0);
+include "db_link.php";
+$hal = $_GET['apage'];
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +19,7 @@
   <!--     Fonts and icons     -->
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
-  
+
   <link href="assets/css/material-dashboard.css?v=2.1.0" rel="stylesheet" />
 
   <!-- Select 2 Style -->
@@ -43,54 +43,54 @@
         </a></div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li <?php if($hal == 'homepage') echo "class='nav-item active'";?>>
+          <li <?php if ($hal == 'homepage') echo "class='nav-item active'"; ?>>
             <a class="nav-link" href="homepage">
               <i class="material-icons">dashboard</i>
               <p>Dashboard</p>
             </a>
           </li>
-          <li <?php if($hal == 'alat') echo "class='nav-item active'";?>>
+          <li <?php if ($hal == 'alat') echo "class='nav-item active'"; ?>>
             <a class="nav-link" href="alat-1">
               <i class="material-icons">library_books</i>
               <p>Data Alat</p>
             </a>
           </li>
-          <li <?php if($hal == 'kategori') echo "class='nav-item active'";?>>
+          <li <?php if ($hal == 'kategori') echo "class='nav-item active'"; ?>>
             <a class="nav-link" href="kategori">
               <i class="material-icons">category</i>
               <p>Kategori</p>
             </a>
           </li>
           </li>
-          <li <?php if($hal == 'lokasi') echo "class='nav-item active'";?>>
+          <li <?php if ($hal == 'lokasi') echo "class='nav-item active'"; ?>>
             <a class="nav-link" href="lokasi">
               <i class="material-icons">location_ons</i>
               <p>Lokasi</p>
             </a>
           </li>
           </li>
-          <li <?php if($hal == 'gangguan') echo "class='nav-item active'";?>>
+          <li <?php if ($hal == 'gangguan') echo "class='nav-item active'"; ?>>
             <a class="nav-link" href="gangguan">
               <i class="material-icons">report</i>
               <p>Gangguan</p>
             </a>
           </li>
           </li>
-          <li <?php if($hal == 'penanganan') echo "class='nav-item active'";?>>
+          <li <?php if ($hal == 'penanganan') echo "class='nav-item active'"; ?>>
             <a class="nav-link" href="penanganan">
               <i class="material-icons">assignment</i>
               <p>Penanganan</p>
             </a>
           </li>
           </li>
-          <li <?php if($hal == 'lapor') echo "class='nav-item active'";?>>
+          <li <?php if ($hal == 'lapor') echo "class='nav-item active'"; ?>>
             <a class="nav-link" href="lapor">
               <i class="material-icons">comment</i>
               <p>Lapor Gangguan</p>
             </a>
           </li>
           </li>
-          <li <?php if($hal == 'mutasi') echo "class='nav-item active'";?>>
+          <li <?php if ($hal == 'mutasi') echo "class='nav-item active'"; ?>>
             <a class="nav-link" href="mutasi">
               <i class="material-icons">cached</i>
               <p>Mutasi</p>
@@ -103,8 +103,7 @@
       <!-- Navbar -->
       <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top " id="navigation-example">
         <div class="container-fluid">
-          <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index"
-            aria-expanded="false" aria-label="Toggle navigation" data-target="#navigation-example">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation" data-target="#navigation-example">
             <span class="sr-only">Toggle navigation</span>
             <span class="navbar-toggler-icon icon-bar"></span>
             <span class="navbar-toggler-icon icon-bar"></span>
@@ -122,27 +121,26 @@
             </form>
             <ul class="navbar-nav">
               <li class="nav-item dropdown">
-                <a class="nav-link" href="javscript:void(0)" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                  aria-haspopup="true" aria-expanded="false">
-                  <?php  
-                    $sql = mysqli_query($dblink,"SELECT COUNT(tblalat.status_alat) as jumlah
+                <a class="nav-link" href="javscript:void(0)" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <?php
+                  $sql = mysqli_query($dblink, "SELECT COUNT(tblalat.status_alat) as jumlah
                             FROM
                                 tblalat, tblkategori, tbllokasi
                             WHERE
                                 tblalat.id_kategori = tblkategori.id_kategori AND tblalat.id_lokasi = tbllokasi.id_lokasi AND tblalat.status_alat = 'Rusak Sementara'");
-                     
-                        while ($r=mysqli_fetch_array($sql,MYSQLI_ASSOC)){
-                          $xjumlah = isset($r['jumlah']) ? $r['jumlah'] : '';
-                        }
-                          $notif=$xjumlah;
-                        if($notif=='0'){
-                          echo"<i class='material-icons'>notifications</i>";
-                        }else{
-                          echo"<i class='material-icons text-warning'>notifications</i>
+
+                  while ($r = mysqli_fetch_array($sql, MYSQLI_ASSOC)) {
+                    $xjumlah = isset($r['jumlah']) ? $r['jumlah'] : '';
+                  }
+                  $notif = $xjumlah;
+                  if ($notif == '0') {
+                    echo "<i class='material-icons'>notifications</i>";
+                  } else {
+                    echo "<i class='material-icons text-warning'>notifications</i>
                                   <span class='notification'>
                                     $xjumlah
                                   </span>";
-                                }
+                  }
                   ?>
                   <p class="d-lg-none d-md-block"><br>
                   </p>
@@ -150,12 +148,12 @@
 
                 <div class='dropdown-menu dropdown-menu-right' aria-labelledby='navbarDropdownMenuLink'>
                   <?php
-                  if($notif=='0'){
-                    echo"<a class='dropdown-item' href=''> Tidak Ada Laporan Gangguan Terbaru</a>";
-                  }else{
-                    echo"<a class='dropdown-item' href='gangguan'> $xjumlah Peralatan Rusak Belum Diproses</a>";
+                  if ($notif == '0') {
+                    echo "<a class='dropdown-item' href=''> Tidak Ada Laporan Gangguan Terbaru</a>";
+                  } else {
+                    echo "<a class='dropdown-item' href='gangguan'> $xjumlah Peralatan Rusak Belum Diproses</a>";
                   }
-                ?></div>
+                  ?></div>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="javascript:void(0)">
@@ -173,13 +171,13 @@
       <div class="content">
         <div class="container-fluid text-white">
           <?php
-						$slink=$_REQUEST['xlink'];
-						if(isset($slink)){
-							include"$slink";
-						}else{
-              include"view_data/home.php";
-						}
-            ?>
+          $slink = $_REQUEST['xlink'];
+          if (isset($slink)) {
+            include "$slink";
+          } else {
+            include "view_data/home.php";
+          }
+          ?>
         </div>
       </div>
 
@@ -246,8 +244,8 @@
   <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="assets/js/material-dashboard.js?v=2.1.0"></script>
   <script>
-    $(document).ready(function () {
-      $().ready(function () {
+    $(document).ready(function() {
+      $().ready(function() {
         $sidebar = $('.sidebar');
 
         $sidebar_img_container = $sidebar.find('.sidebar-background');
@@ -258,7 +256,7 @@
 
         window_width = $(window).width();
 
-        $('.fixed-plugin a').click(function (event) {
+        $('.fixed-plugin a').click(function(event) {
           // Alex if we click on switch, stop propagation of the event, so the dropdown will not be hide, otherwise we set the  section active
           if ($(this).hasClass('switch-trigger')) {
             if (event.stopPropagation) {
@@ -269,7 +267,7 @@
           }
         });
 
-        $('.fixed-plugin .active-color span').click(function () {
+        $('.fixed-plugin .active-color span').click(function() {
           $full_page_background = $('.full-page-background');
 
           $(this).siblings().removeClass('active');
@@ -290,7 +288,7 @@
           }
         });
 
-        $('.fixed-plugin .background-color .badge').click(function () {
+        $('.fixed-plugin .background-color .badge').click(function() {
           $(this).siblings().removeClass('active');
           $(this).addClass('active');
 
@@ -301,7 +299,7 @@
           }
         });
 
-        $('.fixed-plugin .img-holder').click(function () {
+        $('.fixed-plugin .img-holder').click(function() {
           $full_page_background = $('.full-page-background');
 
           $(this).parent('li').siblings().removeClass('active');
@@ -311,7 +309,7 @@
           var new_image = $(this).find("img").attr('src');
 
           if ($sidebar_img_container.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
-            $sidebar_img_container.fadeOut('fast', function () {
+            $sidebar_img_container.fadeOut('fast', function() {
               $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
               $sidebar_img_container.fadeIn('fast');
             });
@@ -320,7 +318,7 @@
           if ($full_page_background.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
             var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
 
-            $full_page_background.fadeOut('fast', function () {
+            $full_page_background.fadeOut('fast', function() {
               $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
               $full_page_background.fadeIn('fast');
             });
@@ -339,7 +337,7 @@
           }
         });
 
-        $('.switch-sidebar-image input').change(function () {
+        $('.switch-sidebar-image input').change(function() {
           $full_page_background = $('.full-page-background');
 
           $input = $(this);
@@ -371,7 +369,7 @@
           }
         });
 
-        $('.switch-sidebar-mini input').change(function () {
+        $('.switch-sidebar-mini input').change(function() {
           $body = $('body');
 
           $input = $(this);
@@ -386,7 +384,7 @@
 
             $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar('destroy');
 
-            setTimeout(function () {
+            setTimeout(function() {
               $('body').addClass('sidebar-mini');
 
               md.misc.sidebar_mini_active = true;
@@ -394,12 +392,12 @@
           }
 
           // we simulate the window Resize so the charts will get updated in realtime.
-          var simulateWindowResize = setInterval(function () {
+          var simulateWindowResize = setInterval(function() {
             window.dispatchEvent(new Event('resize'));
           }, 180);
 
           // we stop the simulation of Window Resize after the animations are completed
-          setTimeout(function () {
+          setTimeout(function() {
             clearInterval(simulateWindowResize);
           }, 1000);
 
@@ -408,7 +406,7 @@
     });
   </script>
   <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
       // Javascript method's body can be found in assets/js/demos.js
       md.initDashboardPageCharts();
 
@@ -419,12 +417,12 @@
   <!-- <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script> -->
 
   <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
       $('.select2').select2();
     });
   </script>
   <script>
-    $("#xnama").change(function () {
+    $("#xnama").change(function() {
       var postForm = {
         'id': document.getElementById("xnama").value,
         'op': 1
@@ -433,7 +431,7 @@
         type: "post",
         url: "pilihan_mutasi.php",
         data: postForm,
-        success: function (data) {
+        success: function(data) {
           $("#xlb").html(data);
         }
       });
@@ -442,11 +440,11 @@
   <!-- <script src="//code.jquery.com/jquery-1.12.4.min.js"></script>
   <script src="//code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script> -->
   <script>
-  $(function() {
-    $( "#daftar_lokasi" ).autocomplete({
-      source: 'cari_lokasi.php'
+    $(function() {
+      $("#daftar_lokasi").autocomplete({
+        source: 'cari_lokasi.php'
+      });
     });
-  });
   </script>
 </body>
 
